@@ -1,8 +1,2 @@
 exif==1.3.5
-<<<<<<< HEAD
 jupyterlab==3.3.3
-||||||| merged common ancestors
-=======
-pandas==1.2.4
-jupyterlab==3.3.3
->>>>>>> 11e5f9757c8756abc66625d782cc36d0955c120b
