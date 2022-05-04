@@ -53,9 +53,7 @@ lorem ipsum salts
 [https://github.com/jessgschueler/team-week1.git](https://github.com/jessgschueler/team-week1.git)
 
 ### Details
-more stuff
-<picture>
-// lorem ipsum salts
+A [Data Stack Academy](https://www.datastack.academy/) team week project. In which we grab ~100 personal cellphone pictures and their metadata (things like date it was taken and image resolution) that are natively stored within the images themselves. We then sort and clean them into new dataset(s) using various techniques we have learned over the first 4 weeks of the course.
 
 ### Known Bugs
 At this time there is no known bugs.
