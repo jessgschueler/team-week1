@@ -71,6 +71,8 @@ The group that worked on this created a plan to complete this project in the dea
 
 The group also familiarized ourselves with new technologies and took time to understand the new technologies. This includes planning tools and python modules. The group ended up using a Kanban board for our planning stage, which ended up being a very useful tool for tracking our progress with the project.
 
+This diagram shows our ETL process:
+![This diagram shows our ETL process:](ETL-diagram.png)
 
 ### Known Bugs
 
