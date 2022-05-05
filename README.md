@@ -65,9 +65,12 @@ A [Data Stack Academy](https://www.datastack.academy/) team week project. In whi
 
 
 ### Details
-With this group project for [Data Stack Academy](https://www.datastack.academy/) we each contributed around 20 photos to a google cloud repository. The code within this repository takes all those photos and extracts their metadata. With that metadata the code puts it into a csv file. From there the code take the csv and runs transformations and cleaning on the dataset and outputs several new datasets. Establishing itself as an ETL. 
+With this group project for [Data Stack Academy](https://www.datastack.academy/) we each contributed around 20 photos to a google cloud repository. The code within this repository takes all those photos and extracts their metadata. With that metadata the code puts it into a csv file. From there the code take the csv and runs transformations and cleaning on the dataset and outputs several new datasets. Establishing itself as an ETL.
+
 The group that worked on this created a plan to complete this project in the deadline of 1 week. Each group member contributed to each step of the process, keeping constant communication and peer support to meet the deadline.
-  
+
+The group also familiarized ourselves with new technologies and took time to understand the new technologies. This includes planning tools and python modules. The group ended up using a Kanban board for our planning stage, which ended up being a very useful tool for tracking our progress with the project.
+
 
 ### Known Bugs
 
