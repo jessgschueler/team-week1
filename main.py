@@ -128,9 +128,6 @@ def drop_na():
     return meta_df
 
 def date_format():
-    """
-    
-    """
     def remove_time(value):
     # Define inner function to act on the DateTime column
         date = value
