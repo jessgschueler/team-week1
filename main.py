@@ -112,10 +112,61 @@ def md5_hash():
         return hasher.hexdigest()
     #run calculate_hash_val func over file path column and add to df as 'md5 hash'
     
-    meta_df['MD5 Hash'] = meta_df['File Path'].map(calculate_hash_val)
-        """
-        maps the hash id on to the meta data dataframe and then drops the duplicate hashes
-        """
-    #drop duplicate columns using Md5 Hash
-    meta_df.drop_duplicates(keep='first', subset='MD5 Hash', inplace = True)
+meta_df['MD5 Hash'] = meta_df['File Path'].map(calculate_hash_val)
+"""
+maps the hash id on to the meta data dataframe and then drops the duplicate hashes
+"""
+#drop duplicate columns using Md5 Hash
+meta_df.drop_duplicates(keep='first', subset='MD5 Hash', inplace = True)
 
+
+"""
+find and drop all null values in rows and rewriting over the existing df
+"""
+def drop_na():
+    meta_df.dropna(axis=0, how='all', subset=['Make', 'Model', 'DateTime'], inplace= True)
+    return meta_df
+
+def date_format():
+    """
+    
+    """
+    def remove_time(value):
+    # Define inner function to act on the DateTime column
+        date = value
+        # assign the DateTime column value to date
+        try:
+            date = datetime.datetime.strptime(str(value), '%Y:%m:%d %H:%M:%S').date()
+            # format column date with only the date returned, with hours, minutes, seconds removed
+        except:
+            pass
+        return date
+    meta_df["DateTime"] = meta_df["DateTime"].map(remove_time)
+    # use .map to call remove_time() on all DateTime columns
+    date_sorted_df = meta_df.sort_values(["DateTime"])
+    # assign variable to sorted dates from earliest to newest
+    date_sorted_df.to_csv("data/sorted.csv", encoding="utf-8", index=False)
+    # write sorted rows to a new dataframe
+    return date_sorted_df
+
+
+def thumbs_n_nails():
+    size = 100, 100
+    # define size variable with value 100, 100 to later be used
+    os.mkdir('./images/thumbnails')
+    # make a new directory in images called thumbnails
+    try:
+        for in_file in glob.glob("./images/*.jpg"):
+            # loop through each file in images with .jpg extension
+            new = os.path.split(in_file)
+            # access and split the current files filepath to manipulate
+            new_filepath = os.path.join(new[0], "thumbnails", "thumbnail_" + new[1])
+            # make new filepath
+            with Image.open(in_file) as img:
+                # open the current file image
+                img.thumbnail(size)
+                # resize current file image as a thumbnail
+                img.save(new_filepath)
+                # and save to the new path
+    except:
+        pass
