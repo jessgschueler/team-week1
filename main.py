@@ -58,20 +58,20 @@ def dict_convert():
                 # if not readable, decode it.
                 file_dict[tag] = data
                 # create a dictionary key-value pair with {metadata tag: data from photo}
+            name = {'File Path': image}
+            file_dict.update(name)
             dict_list.append(file_dict)
             # append the dictionary to our empty list "dict_list"
         except:
         # If the file is not readable by our function, instead of raising a value error. Pass it on through and leave it's dictionary empty.
-            pass
-        
+            pass   
     return dict_list
     # returns our list of dictionaries for each photo.
 
 dict_list = dict_convert()
 # assign our dict_list to our function(dict_convert()) output
-field_names = dict_list[1].keys()
+field_names = ['TileWidth', 'TileLength', 'GPSInfo','ResolutionUnit', 'ExifOffset', 'Make', 'Model', 'Software', 'Orientation', 'DateTime', 'XResolution', 'YResolution', 'HostComputer', 'File Path']
 # assign our header column names to the second photo in our directory (The first one is Blank [0])
-
 with open("./data/meta_data.csv", 'w',newline='') as csvfile:
 # write to meta_data.csv
     writer = DictWriter(csvfile, fieldnames=field_names, extrasaction='ignore')
