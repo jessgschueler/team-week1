@@ -76,7 +76,7 @@ This diagram shows our ETL process:
 
 ### Known Bugs
 
-At this time there is no known bugs.
+The thumbnail creator function only creates thumbnails for 4 images.
 
 ### Copyright 2022
 
