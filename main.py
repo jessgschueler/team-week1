@@ -8,6 +8,17 @@ import numpy as np
 import hashlib
 import datetime
 
+#function to rename files
+def file_rename():
+    #use counter to count up + 1 for every image
+    count = 10
+    #for loop that iterates over each image in images
+    for image in os.listdir('images'):
+       #rename image file to img_(file number)
+       
+        os.rename(f'./images/{image}', f'./images/img_{count}.jpg')
+        count += 1
+
 def img_filepaths():
     """
     Returns a list of all the file filepaths in our directory variable.
