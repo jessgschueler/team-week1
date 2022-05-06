@@ -10,6 +10,8 @@ import datetime
 
 #function to rename files
 def file_rename():
+    """Renames all files in the image to ensure no duplicates and make sure all are the same file type
+    """
     #use counter to count up + 1 for every image
     count = 10
     #for loop that iterates over each image in images
