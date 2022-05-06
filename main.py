@@ -10,7 +10,7 @@ import datetime
 
 #function to rename files
 def file_rename():
-    """Renames all files in the image to ensure no duplicates and make sure all are the same file type
+    """Renames all files in the image to ensure no duplicates names and make sure all are the same file type
     """
     #use counter to count up + 1 for every image
     count = 10
@@ -84,11 +84,18 @@ with open("./data/meta_data.csv", 'w',newline='') as csvfile:
     # write the rows with our dict_list which was the output of our dict_convert() function.
     
 #read csv file and export to pandas df
+    """
+    reads cvs file with pandas
+
+    """
 meta_file = './data/meta_data.csv'
 meta_df = pd.read_csv(meta_file, header=0)
 
 # set a hash id value to each image
 def md5_hash():
+    """ 
+    assigns hash values to each file if they have any data
+    """
     def calculate_hash_val(path, block_size=''):
         # calculate hash value on a presecified path
         image = open(path, 'rb')
@@ -104,8 +111,11 @@ def md5_hash():
         image.close()
         return hasher.hexdigest()
     #run calculate_hash_val func over file path column and add to df as 'md5 hash'
+    
     meta_df['MD5 Hash'] = meta_df['File Path'].map(calculate_hash_val)
+        """
+        maps the hash id on to the meta data dataframe and then drops the duplicate hashes
+        """
     #drop duplicate columns using Md5 Hash
     meta_df.drop_duplicates(keep='first', subset='MD5 Hash', inplace = True)
 
-md5_hash()
