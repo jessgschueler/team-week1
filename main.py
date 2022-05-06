@@ -82,3 +82,30 @@ with open("./data/meta_data.csv", 'w',newline='') as csvfile:
     # write the header with "field_names"
     writer.writerows(dict_list)
     # write the rows with our dict_list which was the output of our dict_convert() function.
+    
+#read csv file and export to pandas df
+meta_file = './data/meta_data.csv'
+meta_df = pd.read_csv(meta_file, header=0)
+
+# set a hash id value to each image
+def md5_hash():
+    def calculate_hash_val(path, block_size=''):
+        # calculate hash value on a presecified path
+        image = open(path, 'rb')
+        # save the variable image as and opened file read in binairy
+        hasher = hashlib.md5()
+        # assign a variable hasher with the hash values
+        data = image.read()
+        while len(data) > 0:
+            # set data as reading the open file and checking to see if there is any data in the file
+            hasher.update(data)
+            # if there is, update the opened file with a hash id
+            data = image.read()
+        image.close()
+        return hasher.hexdigest()
+    #run calculate_hash_val func over file path column and add to df as 'md5 hash'
+    meta_df['MD5 Hash'] = meta_df['File Path'].map(calculate_hash_val)
+    #drop duplicate columns using Md5 Hash
+    meta_df.drop_duplicates(keep='first', subset='MD5 Hash', inplace = True)
+
+md5_hash()
