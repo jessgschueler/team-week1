@@ -3,7 +3,10 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 from csv import DictWriter
 import pandas as pd
-import os
+import os, glob
+import numpy as np
+import hashlib
+import datetime
 
 def img_filepaths():
     """
