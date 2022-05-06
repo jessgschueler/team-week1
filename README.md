@@ -76,7 +76,12 @@ This diagram shows our ETL process:
 
 ### Known Bugs
 
-At this time there is no known bugs.
+The thumbnail creator function only creates thumbnails for 4 images.
+
+## Future Features
+- Sort photos by gps location and return where in the world those gps locations are.
+- Change our initial metadata pull function to include more data.
+- Allow photo rename function to be ran more than one time.
 
 ### Copyright 2022
 
