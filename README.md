@@ -83,6 +83,7 @@ The thumbnail creator function only creates thumbnails for 4 images.
 - Change our initial metadata pull function to include more data.
 - Allow photo rename function to be ran more than one time.
 
+
 ### Copyright 2022
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -90,3 +91,19 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+### Instructor Recommendations
+
+- In `main.py` is better to create a function called `main()` (at the very end that calls all the other functions) in order. This is the main _"pipeline"_ function the calls all other functions. Currently, each function is called right after its declaration which could get messy when your code grows.
+
+- Some functions have their input _hard coded_; for example the `img_filepaths()` hard codes the directory name to _"./images"_. It's always better to define function parameters which are passed by the caller. For example this function should be something like `img_filepaths(dirname)`. **Generally** in a pipeline, the output of one function is the input parameter of the next one. Go through and change this for all the applicable functions.
+
+- Similarly as above, most of the functions use global variable. It's better for function to define all their input as parameters instead of referencing them as global variable. This is for two reason. Global variables get very hard to track when you are debugging. As your code grows, it gets difficult to see where these variables are being changed. Functions must also return the variables that they are changing. By using this technique, the overall `main()` clearly shows what's being passed into each function and what gets returned.
+
+- A general design tip is to use JSON files versus CSVs to store your files and their metadata. You have observed that your data is _semi-structured_; meaning that images have different metadata columns and not all of them are always present. This sort of data makes a better design choice for using JSON files. These files are also _semi-structures_ where every row has different columns (aka metadata). Try saving your intermediate files as JSON Row files and only impose a rigid structure (like CSVs) when you're writing to the database table
+
+- One of the main prompts that wasn't completed is to write the final output into a database table. Write your good and reject Dataframes into MySQL or MariaDB.
+
+- Small things:
+  - On some lines the code comment is not indented the same as the code block its in.
+  - It's not required, but it's better not to have spaces in dict key names. Use the same naming convention as variable names, ie: _"file_name"_
